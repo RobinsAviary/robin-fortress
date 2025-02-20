@@ -1,3 +1,5 @@
+A fork of the Source 2013 Multiplayer SDK. Focuses mainly on TF2. Various quality-of-life fixes/additions. 
+
 # Source SDK 2013
 
 Source code for Source SDK 2013.
