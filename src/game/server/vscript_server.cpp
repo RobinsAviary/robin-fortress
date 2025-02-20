@@ -1011,6 +1011,11 @@ static float MaxClients()
 	return gpGlobals->maxClients;
 }
 
+static unsigned int MaxClientsEx()
+{
+	return gpGlobals->maxClients;
+}
+
 static float FrameTime()
 {
 	return gpGlobals->frametime;
@@ -2591,7 +2596,8 @@ bool VScriptServerInit()
 				ScriptRegisterFunctionNamed( g_pScriptVM, ScriptTraceLinePlayersIncluded, "TraceLinePlayersIncluded", "given 2 points & ent to ignore, return fraction along line that hits world, models, players or npcs" );
 
 				ScriptRegisterFunction( g_pScriptVM, FrameTime, "Get the time spent on the server in the last frame" );
-				ScriptRegisterFunction( g_pScriptVM, MaxClients, "Get the current number of max clients set by the maxplayers command." );
+				ScriptRegisterFunction( g_pScriptVM, MaxClients, "Get the current number of max clients set by the maxplayers command. Legacy only, use MaxClientsEx." );
+				ScriptRegisterFunction( g_pScriptVM, MaxClientsEx, "Get the current number of max clients set by the maxplayers command." );
 				ScriptRegisterFunctionNamed( g_pScriptVM, DoEntFireByInstanceHandle, "EntFireByHandle", "Generate and entity i/o event. First parameter is an entity instance." );
 				ScriptRegisterFunctionNamed( g_pScriptVM, ScriptCreateSceneEntity, "CreateSceneEntity", "Create a scene entity to play the specified scene." );
 				ScriptRegisterFunction( g_pScriptVM, CreateProp, "Create a physics prop" );
