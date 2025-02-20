@@ -76,6 +76,8 @@ ConVar tf_movement_lost_footing_restick( "tf_movement_lost_footing_restick", "50
                                          "Early escape the lost footing condition if the player is moving slower than this across the ground" );
 ConVar tf_movement_lost_footing_friction( "tf_movement_lost_footing_friction", "0.1", FCVAR_REPLICATED | FCVAR_CHEAT,
                                           "Ground friction for players who have lost their footing" );
+ConVar sv_enablebunnyhopping("sv_enablebunnyhopping", "0", FCVAR_REPLICATED | FCVAR_CHEAT , "Disables anti-bunnyhopping checks (bunnyjumping)");
+ConVar sv_autobunnyhopping("sv_autobunnyhopping", "0", FCVAR_REPLICATED | FCVAR_NOTIFY, "Players will constantly jump while holding space");
 
 extern ConVar cl_forwardspeed;
 extern ConVar cl_backspeed;
@@ -1091,6 +1093,9 @@ void CTFGameMovement::AirDash( void )
 //-----------------------------------------------------------------------------
 void CTFGameMovement::PreventBunnyJumping()
 {
+	if ( sv_enablebunnyhopping.GetBool() )
+		return;
+
 	if ( m_pTFPlayer->m_Shared.InCond( TF_COND_HALLOWEEN_KART ) )
 		return;
 
@@ -1237,7 +1242,7 @@ bool CTFGameMovement::CheckJumpButton()
 		return false;
 
 	// Cannot jump again until the jump button has been released.
-	if ( mv->m_nOldButtons & IN_JUMP )
+	if ( mv->m_nOldButtons & IN_JUMP && (!sv_autobunnyhopping.GetBool() || !bOnGround ))
 		return false;
 
 	// In air, so ignore jumps 
