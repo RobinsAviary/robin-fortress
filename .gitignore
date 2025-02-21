@@ -7,6 +7,9 @@ game/mod_tf/cfg/server_blacklist.txt
 game/mod_tf/stats.txt
 game/mod_tf/voice_ban.dt
 game/mod_tf_win64.exe
+game/mod_tf/cfg/settings.scr
+game/mod_tf/media/viewed.res
+game/mod_tf/tf2_playerstats.dmx
 
 # Visual Studio 
 *.suo
