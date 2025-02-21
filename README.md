@@ -1,3 +1,5 @@
+# Robin Fortress
+
 A fork of the Source 2013 Multiplayer SDK. Focuses mainly on TF2. Various quality-of-life fixes/additions. 
 
 # Source SDK 2013
@@ -6,13 +8,11 @@ Source code for Source SDK 2013.
 
 Contains the game code for Half-Life 2, HL2: DM and TF2.
 
-**Now including Team Fortress 2! ✨**
-
 ## Build instructions
 
 Clone the repository using the following command:
 
-`git clone https://github.com/ValveSoftware/source-sdk-2013`
+`git clone https://github.com/RobinsAviary/robin-fortress.git`
 
 ### Windows
 
