@@ -1361,9 +1361,11 @@ void CTFMinigun::ViewModelAttachmentBlending( CStudioHdr *hdr, Vector pos[], Qua
 void CTFMinigun::CreateMove( float flInputSampleTime, CUserCmd *pCmd, const QAngle &vecOldViewAngles )
 {
 	// Prevent jumping while firing
-	if ( m_iWeaponState != AC_STATE_IDLE )
-	{
-		pCmd->buttons &= ~IN_JUMP;
+	if (GetAttributeList()->GetAttributeByName("lightweight_minigun")) {
+		if (m_iWeaponState != AC_STATE_IDLE)
+		{
+			pCmd->buttons &= ~IN_JUMP;
+		}
 	}
 
 	BaseClass::CreateMove( flInputSampleTime, pCmd, vecOldViewAngles );
