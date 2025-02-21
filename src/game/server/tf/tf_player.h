@@ -476,7 +476,11 @@ public:
 	virtual void NoteSpokeVoiceCommand( const char *pszScenePlayed );
 	void	SpeakWeaponFire( int iCustomConcept = MP_CONCEPT_NONE );
 	void	ClearWeaponFireScene( void );
-	void	FiringTalk() { SpeakWeaponFire(0); }
+	void	FiringTalk(bool skipChecks = false) 
+	{ 
+		if (skipChecks) SpeakWeaponFire(0);
+		else SpeakWeaponFire();
+	}
 
 	virtual int DrawDebugTextOverlays( void );
 
