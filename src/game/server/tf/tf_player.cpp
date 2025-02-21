@@ -20282,12 +20282,18 @@ static ConCommand sv_debug_stuck_particles( "sv_debug_stuck_particles", DebugPar
 //-----------------------------------------------------------------------------
 // Purpose: Debug concommand to set the player on fire
 //-----------------------------------------------------------------------------
-void IgnitePlayer()
+void IgnitePlayer(float burningTime = 5.0f)
 {
 	CTFPlayer *pPlayer = ToTFPlayer( ToTFPlayer( UTIL_PlayerByIndex( 1 ) ) );
-	pPlayer->m_Shared.Burn( pPlayer, pPlayer->GetActiveTFWeapon() );
+	pPlayer->m_Shared.Burn( pPlayer, pPlayer->GetActiveTFWeapon(), burningTime);
 }
-static ConCommand cc_IgnitePlayer( "tf_ignite_player", IgnitePlayer, "Sets you on fire", FCVAR_CHEAT );
+
+// Wrapper for concommand
+void IgnitePlayerCon() {
+	IgnitePlayer();
+}
+
+static ConCommand cc_IgnitePlayer("tf_ignite_player", IgnitePlayerCon, "Sets you on fire", FCVAR_CHEAT);
 
 //-----------------------------------------------------------------------------
 // Purpose: 
