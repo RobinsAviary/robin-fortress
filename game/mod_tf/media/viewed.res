@@ -2,6 +2,6 @@
 {
 	"cp_fortezza"
 	{
-		"viewed"		"7"
+		"viewed"		"10"
 	}
 }

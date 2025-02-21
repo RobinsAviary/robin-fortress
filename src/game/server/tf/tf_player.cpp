@@ -20287,7 +20287,7 @@ void IgnitePlayer()
 	CTFPlayer *pPlayer = ToTFPlayer( ToTFPlayer( UTIL_PlayerByIndex( 1 ) ) );
 	pPlayer->m_Shared.Burn( pPlayer, pPlayer->GetActiveTFWeapon() );
 }
-static ConCommand cc_IgnitePlayer( "tf_ignite_player", IgnitePlayer, "Sets you on fire", FCVAR_CHEAT | FCVAR_DEVELOPMENTONLY );
+static ConCommand cc_IgnitePlayer( "tf_ignite_player", IgnitePlayer, "Sets you on fire", FCVAR_CHEAT );
 
 //-----------------------------------------------------------------------------
 // Purpose: 
