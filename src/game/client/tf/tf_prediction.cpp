@@ -38,10 +38,15 @@ void CTFPrediction::SetupMove( C_BasePlayer *player, CUserCmd *ucmd, IMoveHelper
 		{
 			if ( ( pTFPlayer->GetFlags() & FL_DUCKING ) && ( pTFPlayer->m_Shared.InCond( TF_COND_AIMING ) ) )
 			{
-				// Returns truthy if the attribute does not exist.
-				if (pTFPlayer->GetAttributeList()->GetAttributeByName("lightweight_minigun")) {
+				int lightweightMinigun = 0;
+				CALL_ATTRIB_HOOK_INT_ON_OTHER(pTFPlayer, lightweightMinigun, lightweight_minigun);
+
+				if (lightweightMinigun == 0) {
 					ucmd->forwardmove = 0.0f;
 					ucmd->sidemove = 0.0f;
+				}
+				else {
+					DevMsg("prediction!");
 				}
 			}
 		}
