@@ -107,11 +107,13 @@ public:
 		VPROF_BUDGET( "CAttributeManager::AttribHookValue", VPROF_BUDGETGROUP_ATTRIBUTES );
 
 		// Do we have a hook?
-		if ( pszAttribHook == NULL || pszAttribHook[0] == '\0' )
+		if (pszAttribHook == NULL || pszAttribHook[0] == '\0')
+			DevMsg("No hook found.");
 			return TValue;
 
 		// Verify that we have an entity, at least as "this"
-		if ( pEntity == NULL )
+		if (pEntity == NULL)
+			DevMsg("No entity found.");
 			return TValue;
 
 		IHasAttributes *pAttribInterface = GetAttribInterface( (CBaseEntity*) pEntity );

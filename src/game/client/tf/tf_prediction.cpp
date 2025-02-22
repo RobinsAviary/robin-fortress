@@ -39,9 +39,9 @@ void CTFPrediction::SetupMove( C_BasePlayer *player, CUserCmd *ucmd, IMoveHelper
 			if ( ( pTFPlayer->GetFlags() & FL_DUCKING ) && ( pTFPlayer->m_Shared.InCond( TF_COND_AIMING ) ) )
 			{
 				int lightweightMinigun = 0;
-				CALL_ATTRIB_HOOK_INT_ON_OTHER(pTFPlayer, lightweightMinigun, lightweight_minigun);
+				CALL_ATTRIB_HOOK_INT_ON_OTHER(pTFPlayer->GetActiveTFWeapon(), lightweightMinigun, lightweight_minigun);
 
-				if (lightweightMinigun == 0) {
+				if (!lightweightMinigun) {
 					ucmd->forwardmove = 0.0f;
 					ucmd->sidemove = 0.0f;
 				}
