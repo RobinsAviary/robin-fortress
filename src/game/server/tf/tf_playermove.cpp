@@ -67,14 +67,16 @@ void CTFPlayerMove::SetupMove( CBasePlayer *player, CUserCmd *ucmd, IMoveHelper 
 		{
 			if ( pTFPlayer->m_Shared.InCond( TF_COND_AIMING ) )
 			{
-				if ( pTFPlayer->GetFlags() & FL_DUCKING )
-				{
-					ucmd->forwardmove = 0.0f;
-					ucmd->sidemove = 0.0f;
-				}
+				if (pTFPlayer->GetAttributeList()->GetAttributeByName("lightweight_minigun")) {
+					if (pTFPlayer->GetFlags() & FL_DUCKING)
+					{
+						ucmd->forwardmove = 0.0f;
+						ucmd->sidemove = 0.0f;
+					}
 
-				// Don't allow jumping while firing (unless the design changes)
-				ucmd->buttons &= ~IN_JUMP;
+					// Don't allow jumping while firing (unless the design changes)
+					ucmd->buttons &= ~IN_JUMP;
+				}
 			}
 		}
 
